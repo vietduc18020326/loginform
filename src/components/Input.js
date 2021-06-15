@@ -1,6 +1,5 @@
 import React, {useReducer, useEffect, useState} from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import ErrorMessage from './ErrorMessage';
@@ -50,8 +49,10 @@ const Input = props => {
       isValid: validate.validateInput(text, props).isValid,
     });
   };
-  const blurHandler = () => {
-    dispatch({type: INPUT_BLUR});
+  const blurHandler = text => {
+    dispatch({
+      type: INPUT_BLUR,
+    });
   };
   return (
     <View style={styles.form}>

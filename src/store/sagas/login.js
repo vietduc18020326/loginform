@@ -1,5 +1,5 @@
 import {LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCCESS} from '../actions/types';
-import {call, put, takeLatest, takeEvery} from 'redux-saga/effects';
+import {call, put, takeEvery} from 'redux-saga/effects';
 import auth from '../../api/auth';
 import authStorage from '../../auth/storage';
 
@@ -26,5 +26,6 @@ function* loginSaga(action) {
     return;
   }
   yield put({type: LOGIN_SUCCESS, user: response.data.localId});
+  console.log(response.data.localId);
   yield call(saveUser, response.data.idToken);
 }

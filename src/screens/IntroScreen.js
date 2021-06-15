@@ -1,6 +1,6 @@
-import React from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
-import * as Animatable from 'react-native-animatable';
+import React, {useRef, useEffect} from 'react';
+import {View, Text, StyleSheet, Dimensions, Animated} from 'react-native';
+//import * as Animatable from 'react-native-animatable';
 
 import Screen from '../components/Screen';
 import Card from '../components/Card';
@@ -8,18 +8,45 @@ import Colors from '../constants/Colors';
 import Button from '../components/Button';
 
 const IntroScreen = props => {
+  const imageAni = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    Animated.timing(imageAni, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: true,
+    }).start();
+  }, [imageAni]);
   return (
     <Screen style={styles.container}>
       <View style={styles.header}>
-        <Animatable.Image
+        {/* <Animatable.Image
           animation="bounceIn"
           duraton="1500"
           source={require('../assets/logo.png')}
           style={styles.logo}
           resizeMode="stretch"
+        /> */}
+        <Animated.Image
+          style={{
+            ...styles.logo,
+            opacity: imageAni,
+          }}
+          source={require('../assets/logo.png')}
+          resizeMode="stretch"
         />
       </View>
-      <Animatable.View style={styles.form} animation="fadeInUpBig">
+      <Animated.View
+        style={{
+          ...styles.form,
+          transform: [
+            {
+              translateY: imageAni.interpolate({
+                inputRange: [0, 1],
+                outputRange: [200, 0],
+              }),
+            },
+          ],
+        }}>
         <Card style={styles.cardContainer}>
           <Text style={styles.title}>Conected with everyone</Text>
           <View style={styles.button}>
@@ -33,7 +60,7 @@ const IntroScreen = props => {
             />
           </View>
         </Card>
-      </Animatable.View>
+      </Animated.View>
     </Screen>
   );
 };
