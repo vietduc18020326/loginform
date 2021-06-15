@@ -20,6 +20,10 @@ export const login = (email, password) => {
       dispatch(authActions.loginFailed(errorText));
       return;
     }
+    if (!response.data || JSON.stringify(response.data) === '{}') {
+      dispatch(authActions.loginFailed('Something went wrong!'));
+      return;
+    }
     dispatch(authActions.loginSuccess(response.data.localId));
     authStorage.storeToken(response.data.idToken);
   };
