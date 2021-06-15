@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {View, StyleSheet, Animated, Easing} from 'react-native';
 
 import Screen from '../components/Screen';
 import HeaderScreen from '../components/HeaderScreen';
 
 const HomeScreen = props => {
-  const size = new Animated.Value(0);
+  const size = useRef(new Animated.Value(0)).current;
   useEffect(() => {
     Animated.timing(size, {
       toValue: 14,

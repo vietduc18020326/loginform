@@ -5,12 +5,12 @@ import {useDispatch} from 'react-redux';
 
 import Screen from '../components/Screen';
 import HeaderScreen from '../components/HeaderScreen';
-import * as authActions from '../store/actions/auth';
+import * as authThunks from '../store/thunks/auth';
 
 const SettingScreen = props => {
   const dispatch = useDispatch();
   const logoutHandler = () => {
-    dispatch(authActions.logout());
+    dispatch(authThunks.logout());
   };
 
   return (

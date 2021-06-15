@@ -15,7 +15,7 @@ import Card from '../components/Card';
 import Input from '../components/Input';
 import Screen from '../components/Screen';
 import Colors from '../constants/Colors';
-import * as authActions from '../store/actions/auth';
+import * as authThunks from '../store/thunks/auth';
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
 
@@ -71,7 +71,7 @@ const LoginScreen = props => {
   );
   const loginHandler = () => {
     dispatch(
-      authActions.login(
+      authThunks.login(
         formState.inputValues.email,
         formState.inputValues.password,
       ),
