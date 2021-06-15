@@ -8,7 +8,6 @@ export const login = (email, password) => {
     dispatch({type: LOGIN_REQUEST});
     const response = await auth.login(email, password);
     if (!response.ok) {
-      console.log(response);
       const mess = response.data.error.message;
       let errorText = '';
       if (mess === 'EMAIL_NOT_FOUND') {
