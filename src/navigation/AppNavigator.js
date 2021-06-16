@@ -2,9 +2,9 @@ import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import HomeScreen from '../screens/HomeScreen';
 import SettingScreen from '../screens/SettingScreen';
 import Colors from '../constants/Colors';
+import ItemNavigator from './ItemNavigator';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -17,7 +17,7 @@ export default function AppNavigator() {
       shifting={true}>
       <Tab.Screen
         name="home"
-        component={HomeScreen}
+        component={ItemNavigator}
         options={{
           tabBarIcon: ({size, color}) => (
             <Ionicons name="md-home" size={24} color={color} />

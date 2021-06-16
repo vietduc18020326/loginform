@@ -19,7 +19,7 @@ const StartupNavigator = props => {
       const userId = await authStorage.getUser();
       setIsLoading(false);
       if (userId) {
-        dispatch(authActions.authenticate(userId.user_id));
+        dispatch(authActions.authenticate(userId.user.user_id, userId.token));
       }
     };
     restoreUser();

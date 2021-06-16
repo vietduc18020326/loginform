@@ -58,7 +58,9 @@ const Input = props => {
     <View style={styles.form}>
       <Text>{props.label}</Text>
       <View style={styles.action}>
-        <Icon name={props.icon} size={24} color="#05375a" />
+        {props.icon ? (
+          <Icon name={props.icon} size={24} color="#05375a" />
+        ) : null}
         <TextInput
           {...props}
           style={styles.input}
