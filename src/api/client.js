@@ -4,12 +4,14 @@ import settings from '../config/setting';
 import authStorage from '../auth/storage';
 
 const apiClient = create({
-  baseURL: settings.apiUrl,
+  baseURL: settings.login.apiUrl,
 });
 
 apiClient.addAsyncRequestTransform(async request => {
   const authToken = await authStorage.getToken();
-  if (!authToken) return;
+  if (!authToken) {
+    return;
+  }
   request.headers['x-auth-token'] = authToken;
 });
 
