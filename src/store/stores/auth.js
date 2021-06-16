@@ -10,6 +10,7 @@ const initial = {
   isLogin: false,
   errorText: null,
   userId: null,
+  token: null,
 };
 
 export default (state = initial, action) => {
@@ -44,6 +45,7 @@ export default (state = initial, action) => {
         isLogin: false,
         errorText: null,
         userId: action.user,
+        token: action.token,
       };
     default:
       return state;

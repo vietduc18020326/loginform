@@ -23,6 +23,6 @@ export const loginFailed = text => {
 //   return {type: LOGOUT_REQUEST};
 // };
 
-export const authenticate = user => {
-  return {type: AUTHENTICATE, user};
+export const authenticate = (user, token) => {
+  return {type: AUTHENTICATE, user: user, token: token};
 };

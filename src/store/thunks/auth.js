@@ -24,7 +24,7 @@ export const login = (email, password) => {
       dispatch(authActions.loginFailed('Something went wrong!'));
       return;
     }
-    dispatch(authActions.loginSuccess(response.data.localId));
+    dispatch(authActions.loginSuccess(response.data.idToken));
     authStorage.storeToken(response.data.idToken);
   };
 };
