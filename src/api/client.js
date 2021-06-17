@@ -1,18 +1,18 @@
 import {create} from 'apisauce';
 
 import settings from '../config/setting';
-import authStorage from '../auth/storage';
+//import authStorage from '../auth/storage';
 
 const apiClient = create({
   baseURL: settings.login.apiUrl,
 });
 
-apiClient.addAsyncRequestTransform(async request => {
-  const authToken = await authStorage.getToken();
-  if (!authToken) {
-    return;
-  }
-  request.headers['x-auth-token'] = authToken;
-});
+// apiClient.addAsyncRequestTransform(async request => {
+//   const authToken = await authStorage.getToken();
+//   if (!authToken) {
+//     return;
+//   }
+//   request.headers['x-auth-token'] = authToken;
+// });
 
 export default apiClient;
