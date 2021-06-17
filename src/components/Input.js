@@ -16,6 +16,7 @@ const inputReducer = (state, action) => {
         ...state,
         value: action.value,
         isValid: action.isValid,
+        touched: action.touched,
       };
     case INPUT_BLUR:
       return {
@@ -47,6 +48,7 @@ const Input = props => {
       type: INPUT_CHANGE,
       value: text,
       isValid: validate.validateInput(text, props).isValid,
+      touched: validate.validateInput(text, props).isValid,
     });
   };
   const blurHandler = text => {
