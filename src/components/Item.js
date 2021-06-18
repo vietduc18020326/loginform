@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
     height: 140,
     marginTop: 10,
     marginHorizontal: 40,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
   },
   textContainer: {
     justifyContent: 'center',

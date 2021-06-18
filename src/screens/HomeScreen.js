@@ -42,19 +42,20 @@ const HomeScreen = props => {
     );
   };
   const loadData = useCallback(async () => {
-    setIsLoading(true);
-    setIsError(null);
     try {
+      setIsLoading(true);
+      setIsError(null);
       await dispatch(fetchData());
     } catch (err) {
       setIsError(err);
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   }, [dispatch, setIsError, setIsLoading]);
   useEffect(() => {
     loadData();
   }, [loadData]);
-  const deleteHanlde = id => {
+  const deleteHandle = id => {
     Alert.alert('Are you sure', 'Do you want to delete product', [
       {text: 'No', style: 'default'},
       {
@@ -108,7 +109,7 @@ const HomeScreen = props => {
                 itemTitle: itemData.item.title,
               })
             }
-            onDelete={() => deleteHanlde(itemData.item.id)}
+            onDelete={() => deleteHandle(itemData.item.id)}
           />
         )}
       />
